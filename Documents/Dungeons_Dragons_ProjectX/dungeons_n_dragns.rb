@@ -1,44 +1,84 @@
-
-  class Dice
+class Dice
     @@sides = 0
     @@dice_roll = 0
-    def twenty
-      @@sides = 20
-      puts '20'
-    end
-    def ten
-      @@sides = 10
-    end
-    def eight
-      @@sides = 8
-    end
-    def seven
-      @@sides = 7
-    end
-    def six
-      @@sides = 6
-    end
-    def five
-      @@sides = 5
-    end
-    def four
-      @@sides = 4
-    end
+    @@dice_list = []
+    #sides methods
+      def twenty
+        @@sides = 20
+        puts '20'
+        temp_value = 1
+        @@sides.times do
+          @@dice_list.push(temp_value)
+          temp_value += 1
+        end
+        puts @@dice_list.to_s
+      end
+      def ten
+        @@sides = 10
+        temp_value = 1
+        @@sides.times do
+          @@dice_list.push(temp_value)
+          temp_value += 1
+        end
+        puts @@dice_list.to_s
+      end
+      def eight
+        @@sides = 8
+        temp_value = 1
+        @@sides.times do
+          @@dice_list.push(temp_value)
+          temp_value += 1
+        end
+        puts @@dice_list.to_s
+      end
+      def seven
+        @@sides = 7
+        temp_value = 1
+        @@sides.times do
+          @@dice_list.push(temp_value)
+          temp_value += 1
+        end
+        puts @@dice_list.to_s
+      end
+      def six
+        @@sides = 6
+        temp_value = 1
+        @@sides.times do
+          @@dice_list.push(temp_value)
+          temp_value += 1
+        end
+        puts @@dice_list.to_s
+      end
+      def five
+        @@sides = 5
+        temp_value = 1
+        @@sides.times do
+          @@dice_list.push(temp_value)
+          temp_value += 1
+        end
+        puts @@dice_list.to_s
+      end
+      def four
+        @@sides = 4
+        temp_value = 1
+        @@sides.times do
+          @@dice_list.push(temp_value)
+          temp_value += 1
+        end
+        puts @@dice_list.to_s
+      end
 
     def roll_dice
-      temp_list = []
-      temp_value = 1
-      begin
-        temp_list.push(temp_value)
-        temp_value += 1
-      end until temp_list.length == @@sides
-      @@dice_roll = temp_list[rand(temp_list.length)]
+
+      @@dice_roll = @@dice_list[rand(@@dice_list.length)]
       puts "Your rolled " + @@dice_roll.to_s
 
     end
+
     def number_rolled
       return @@dice_roll
     end
+
   end
 
     def test_stats
@@ -89,156 +129,208 @@
 
 
 #attacking monster stats
-  @attacking_monster_armor = 5
-  @attacking_monster_health = 2
-  @attacking_monster_attack = 8
-  @attacking_monster_damage = 1
+
 
 
 #characters
-@player
-class Keyleth
-  @@playable_char_armor = 17
-  @@playable_char_health = 8
-  @@playable_char_speed = 6
-  @@playable_char_surge = 4
-  #powers
-    #At-will powers
-      #divine challenge
-      #holy strike
-      #valiant strike
-    #righteous smite
-    #arcing smite
-    #benign transposition
-    #bravery
-    #lay on hands
-    #virtue's touch
-    #noble shield
-  #systems
-  def test
-    puts"test"
+  @player
+  class Keyleth
+    @@playable_char_armor = 17
+    @@playable_char_health = 8
+    @@playable_char_speed = 6
+    @@playable_char_surge = 4
+    #powers
+      #At-will powers
+        #divine challenge
+        #holy strike
+        #valiant strike
+      #righteous smite
+      #arcing smite
+      #benign transposition
+      #bravery
+      #lay on hands
+      #virtue's touch
+      #noble shield
+    #systems
+    def test
+      puts "test"
+    end
+
+    def health
+      return @@playable_char_health
+    end
+
+    def take_damage
+      @@playable_char_health -= 1
+      puts "Your hit!!"
+      sleep 1
+      puts "Your @@health is now " + @@playable_char_health.to_s
+      sleep 2
+    end
   end
 
-  def health
-    return @@playable_char_health
+  class Tarak
+    @@playable_char_armor = 14
+    @@playable_char_health = 8
+    @@playable_char_speed = 6
+    @@playable_char_surge = 4
+    #powers
+      #distracting jab
+      #positioning shot
+      #lucky strike
+      #tornado strike
+      #acrobatic onslaught
+      #kings's castle
+      #tumbling escape
+      #distant diversion
+      #practiced evasion
+      #furious assualt
+
+    #systems
+      def health
+        return @@playable_char_health
+      end
+      def armor
+        return @@playable_char_armor
+      end
+      def speed
+        return @@playable_char_speed
+      end
+      def surge
+        return @@playable_char_surge
+      end
+
+    def take_damage
+      @@playable_char_health -= 1
+      puts @@playable_char_health.to_s
+    end
+
   end
 
-  def take_damage
-    @@playable_char_health -= 1
-    puts "Your hit!!"
-    sleep 1
-    puts "Your health is now " + @@playable_char_health.to_s
-    sleep 2
+  class Vistra
+    @@playable_char_armor = 17
+    @@playable_char_health = 8
+    @@playable_char_speed = 5
+    @@playable_char_surge = 4
+    @@playable_char_attack = 8
+    #powers
+    #dwarven resilience
+    #charge
+    #reaping strike
+    #sure strike
+    #comeback
+    #into the fray
+    #taunting advance
+    #inspiring advice
+    #one for the team
+    #to arms!
+    def health
+      return @@playable_char_health
+    end
+    def armor
+      return @@playable_char_armor
+    end
+    def speed
+      return @@playable_char_speed
+    end
+    def surge
+      return @@playable_char_surge
+    end
+    def attack
+      return @@playable_char_attack
+    end
+
+    def take_damage
+      @@playable_char_health -= 1
+    end
+
   end
 
-end
+  class Quinn
+    #stats
+     @@playable_char_armor = 16
+     @@playable_char_health = 8
+     @@playable_char_speed = 5
+     @@playable_char_surge = 4
+     #powers
+       #sacred flame
+       #command
+       #astral refuge
+       #healing hymn
+       #righteous advance
+       #blade barrier
+       #cause fear
+       #wrathful thunder
+       #cleric's shield
+       #perseverance
 
-class Tarak
-  @@playable_char_armor = 14
-  @@playable_char_health = 8
-  @@playable_char_speed = 6
-  @@playable_char_surge = 4
-  #powers
-    #distracting jab
-    #positioning shot
-    #lucky strike
-    #tornado strike
-    #acrobatic onslaught
-    #kings's castle
-    #tumbling escape
-    #distant diversion
-    #practiced evasion
-    #furious assualt
-  #systems
+    #stat methods
+      def armor
+        return @@playable_char_armor
+      end
+      def health
+        return @@playable_char_health
+      end
+      def speed
+        return @@playable_char_speed
+      end
+      def surge
+        return @@playable_char_surge
+      end
 
-  def take_damage
-    @@playable_char_health -= 1
-    puts @@playable_char_health.to_s
-  end
+    #systems
+      def take_damage
+        @@playable_char_health -= 1
+      end
 
-end
+   end
 
-class Vistra
-  @@playable_char_armor = 17
-  @@playable_char_health = 8
-  @@playable_char_speed = 5
-  @@playable_char_surge = 4
-  @@playable_char_attack = 8
-  #powers
-  #dwarven resilience
-  #charge
-  #reaping strike
-  #sure strike
-  #comeback
-  #into the fray
-  #taunting advance
-  #inspiring advice
-  #one for the team
-  #to arms!
-  def health
-    return @@playable_char_health
-  end
-  def armor
-    return @@playable_char_armor
-  end
-  def speed
-    return @@playable_char_speed
-  end
-  def surge
-    return @@playable_char_surge
-  end
-  def attack
-    return @@playable_char_attack
-  end
+  class Heskan
+    #stats
+     @playable_char_armor = 14
+     @playable_char_health = 6
+     @playable_char_speed = 6
+     @playable_char_surge = 3
+    #powers
+       #wizard eye
+       #shock sphere
+       #flaming sphere
+       #hurled breath
+       #ray of frost
+       #mirror image
+       #hypnotism
+       #invisiblity
+       #arc lightning
+       #spectral ram
+    #stat methods
+      def armor
+        return @@playable_char_armor
+      end
 
-  def take_damage
-    @@playable_char_health -= 1
-  end
+      def health
+        return @@playable_char_health
+      end
 
-end
+      def speed
+        return @@playable_char_speed
+      end
 
-def quinn
-   @playable_char_armor = 16
-   @playable_char_health = 8
-   @playable_char_speed = 5
-   @playable_char_surge = 4
-   #powers
-   #sacred flame
-   #command
-   #astral refuge
-   #healing hymn
-   #righteous advance
-   #blade barrier
-   #cause fear
-   #wrathful thunder
-   #cleric's shield
-   #perseverance
- end
+      def surge
+        return @@playable_char_surge
+      end
 
-def heskan
-   @playable_char_armor = 14
-   @playable_char_health = 6
-   @playable_char_speed = 6
-   @playable_char_surge = 3
-   #powers
-   #wizard eye
-   #shock sphere
-   #flaming sphere
-   #hurled breath
-   #ray of frost
-   #mirror image
-   #hypnotism
-   #invisiblity
-   #arc lightning
-   #spectral ram
- end
+    #systems
+      def take_damage
+        @@playable_char_health -= 1
+      end
 
-#player powers
+   end
 
 
 #monsters
   @monster
   class Duergar_guard
+    #stats
      @@armor = 16
      @@health = 20
      @@attack = 8
@@ -246,7 +338,7 @@ def heskan
      @@experience = 2
      @@to_attack = 1 #square
 
-     #stat method
+    #stat method
        def damage
          return @@damage
        end
@@ -272,12 +364,12 @@ def heskan
         @@health -= 1
       end
 
-   end
+  end
 
   def orc_archer
-     armor = 13
-     health = 1
-     attack = 6
+     @@armor = 13
+     @@health = 1
+     @@attack = 6
      punch_damage = 1
      arrow_damage = 2
      arrow_missed_damage = 1
@@ -287,85 +379,85 @@ def heskan
    end
 
   def legion_devil
-     armor = 16
-     health = 1
-     attack = 11
+     @@armor = 16
+     @@health = 1
+     @@attack = 11
      damage = 1
      experience = 3
      to_attack_bite = 1 #square
      to_attack_tentacles = 1 #tile
-     #If attack with tentacles moves next to player
+     #If @@attack with tentacles moves next to player
    end
 
   def grell
-     armor = 15
-     health = 2
-     attack = 7
-     bite_damage = 1 #+ poisoned
-     bite_damage_missed = 1
-     tentacles_damage = 1 #+ dazed
-     experience = 2
+     @@armor = 15
+     @@health = 2
+     @@attack = 7
+     @@bite_damage = 1 #+ poisoned
+     @@bite_damage_missed = 1
+     @@tentacles_damage = 1 #+ dazed
+     @@experience = 2
    end
 
   def orc_smasher
-     armor = 15
-     health = 2
-     attack = 9
-     damage = 1
-     experience = 2
-     to_attack = 1 #tile
+     @@armor = 15
+     @@health = 2
+     @@attack = 9
+     @@damage = 1
+     @@experience = 2
+     @@to_attack = 1 #tile
      # If attacks moves next to player
    end
 
   def cave_bear
-     armor = 14
-     health = 2
-     claws_attack = 4
-     claws_damage = 2
-     strike_attack = 8
-     strike_damage = 2 #+ dazed
-     experience = 2
-     to_attack_claws = 1 #tile
-     to_attack_strike = #same tile
-     #If attack with stike moves next to players
+     @@armor = 14
+     @@health = 2
+     @@claws_attack = 4
+     @@claws_damage = 2
+     @@strike_attack = 8
+     @@strike_damage = 2 #+ dazed
+     @@experience = 2
+     @@to_attack_claws = 1 #tile
+     @@to_attack_strike = #same tile
+     #If @@attack with stike moves next to players
 
   def snake
-     armor = 13
-     health = 1
-     attack = 7
-     damage = #poisoned
-     experience = 1
-     to_attack = 1 #tile
+     @@armor = 13
+     @@health = 1
+     @@attack = 7
+     @@amage = #poisoned
+     @@experience = 1
+     @@to_attack = 1 #tile
      #If attacks moves next to player
    end
 
   def kobold_dragonshield
-     armor = 16
-     health = 1
-     attack = 7
-     damage = 1
-     experience = 1
-     to_attack = 1 #square
+     @@armor = 16
+     @@health = 1
+     @@attack = 7
+     @@damage = 1
+     @@experience = 1
+     @@to_attack = 1 #square
 
    end
 
   def human_cultist
-     armor = 14
-     health = 1
-     attack = 6
-     damage = 1 #+ poisoned
-     experience = 1
-     to_attack = 1 #tile
+     @@armor = 14
+     @@health = 1
+     @@attack = 6
+     @@damage = 1 #+ poisoned
+     @@experience = 1
+     @@to_attack = 1 #tile
      #If attacks moves next to player
    end
 
   def gibbering_mouther
-     armor = 14
-     health = 2
-     attack = 8
-     damage = 1 #+ dazed
-     experience = 3
-     to_attack = 1 #tile
+     @@armor = 14
+     @@health = 2
+     @@attack = 8
+     @@damage = 1 #+ dazed
+     @@experience = 3
+     @@to_attack = 1 #tile
      # Attacks all players
    end
 
@@ -374,32 +466,42 @@ def heskan
   end
 
 #systems
-@monster = Duergar_guard.new
+  @dice_four = Dice.new
+   @dice_four.four
+  @dice_five = Dice.new
+    @dice_five.five
+
+
+  @monster = Duergar_guard.new
+
   def player_attack
-    @Dice.roll_dice
-    temp_value = (@Dice.number_rolled) + (@player.attack)
-    if temp_value > @monster.armor
-      @monster.take_damage
+      @Dice.roll_dice
+      temp_value = (@Dice.number_rolled) + (@player.attack)
+      if temp_value > @monster.armor
+        @monster.take_damage
+      end
+      puts @monster.health.to_s
     end
-    puts @monster.health.to_s
-  end
+
   def monster_attack attacker
-    @Dice.roll_dice
-    temp_value = (@Dice.number_rolled) + (attacker.attack)
-    if temp_value > @player.armor
-      @player.take_damage
+      @Dice.roll_dice
+      temp_value = (@Dice.number_rolled) + (attacker.attack)
+      if temp_value > @player.armor
+        @player.take_damage
+      end
+      puts @player.health.to_s
     end
-    puts @player.health.to_s
-  end
 
 
 
 @answer = 0
 
-pick_playable_character
+#pick_playable_character
 #dice 20
-#attack
+#@@attack
 @Dice = Dice.new
+@Dice.four
 
-@Dice.twenty
-@dice.roll_dice
+
+
+@ice.roll_dice
