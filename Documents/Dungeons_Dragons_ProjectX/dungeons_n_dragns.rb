@@ -54,39 +54,46 @@ class Dice
 
   end
 
-
-    def pick_playable_character
+@player = 1
+def pick_playable_character
       temp = false
       begin
       puts "Pick a Character"
       puts " "
       sleep 1
-      puts '1 Quin Humman Cleric, 2 Vistra Dwarf fighter, 3 Heskan Dragonborn Wizzard'
-      puts '4 Tarak Half-Orc Rogue, 5 Keyleth Elf Paladin'
+      puts '1 Quin Humman Cleric,'
+      puts '2 Vistra Dwarf fighter,'
+      puts '3 Heskan Dragonborn Wizzard'
+      puts '4 Tarak Half-Orc Rogue,'
+      puts '5 Keyleth Elf Paladin'
       puts ' '
       sleep 1
       puts 'Type in the number for the character you want.'
       puts ' '
       @answer = gets.chomp.to_i
       if @answer == 1
-        quinn
+        @player = Quinn.new
       end
       if @answer == 2
         @player = Vistra.new
       end
       if @answer == 3
-        heskan
+        @player = Heskan.new
       end
       if @answer == 4
-        tarak
+        @player = Tarak.new
       end
       if @answer == 5
         @player = Keyleth. new
       end
       if @answer > 5
-        puts 'Invalid Answer'
+        puts 'Invalid Answer Try agian'
       else
+        if @answer == 0
+          puts 'Invalid Answer Try Agian'
+        else
         temp = true
+      end
       end
       end until temp == true
     end
@@ -114,12 +121,21 @@ class Dice
       #virtue's touch
       #noble shield
     #systems
-    def test
-      puts "test"
-    end
-
     def health
       return @@playable_char_health
+    end
+    def armor
+      return @@playable_char_armor
+    end
+    def speed
+      return @@playable_char_speed
+    end
+    def surge
+      return @@playable_char_surge
+    end
+
+    def test
+      puts "test"
     end
 
     def take_damage
@@ -149,6 +165,9 @@ class Dice
       #furious assualt
 
     #systems
+      def test
+        puts 'test'
+      end
       def health
         return @@playable_char_health
       end
@@ -186,6 +205,9 @@ class Dice
     #inspiring advice
     #one for the team
     #to arms!
+    def test
+      puts 'test'
+    end
     def health
       return @@playable_char_health
     end
@@ -226,6 +248,10 @@ class Dice
        #cleric's shield
        #perseverance
 
+       def test
+         puts 'test'
+       end
+
     #stat methods
       def armor
         return @@playable_char_armor
@@ -265,6 +291,9 @@ class Dice
        #arc lightning
        #spectral ram
     #stat methods
+    def test
+      puts 'test'
+    end
       def armor
         return @@playable_char_armor
       end
@@ -451,11 +480,12 @@ class Dice
       puts @player.health.to_s
     end
 
-
-
 dice = Dice.new
-
-begin
-dice.four
-dice.roll_dice
-end until dice.number_rolled == 1
+pick_playable_character
+test_list = []
+test_list.push @player.test
+test_list.push @player.health
+test_list.push @player.armor
+test_list.push @player.speed
+test_list.push @player.surge
+puts test_list.to_s
