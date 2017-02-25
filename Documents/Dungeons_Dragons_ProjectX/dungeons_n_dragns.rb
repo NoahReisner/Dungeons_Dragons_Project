@@ -1,92 +1,59 @@
 class Dice
     @@sides = 0
-    @@dice_roll = 0
-    @@dice_list = []
+    @dice_roll = 0
+
     #sides methods
       def twenty
         @@sides = 20
         puts '20'
-        temp_value = 1
-        @@sides.times do
-          @@dice_list.push(temp_value)
-          temp_value += 1
-        end
-        puts @@dice_list.to_s
+
       end
       def ten
         @@sides = 10
-        temp_value = 1
-        @@sides.times do
-          @@dice_list.push(temp_value)
-          temp_value += 1
-        end
-        puts @@dice_list.to_s
+
       end
       def eight
         @@sides = 8
-        temp_value = 1
-        @@sides.times do
-          @@dice_list.push(temp_value)
-          temp_value += 1
-        end
-        puts @@dice_list.to_s
+
       end
       def seven
         @@sides = 7
-        temp_value = 1
-        @@sides.times do
-          @@dice_list.push(temp_value)
-          temp_value += 1
-        end
-        puts @@dice_list.to_s
+
       end
       def six
         @@sides = 6
-        temp_value = 1
-        @@sides.times do
-          @@dice_list.push(temp_value)
-          temp_value += 1
-        end
-        puts @@dice_list.to_s
+
       end
       def five
         @@sides = 5
-        temp_value = 1
-        @@sides.times do
-          @@dice_list.push(temp_value)
-          temp_value += 1
-        end
-        puts @@dice_list.to_s
+
       end
       def four
         @@sides = 4
-        temp_value = 1
-        @@sides.times do
-          @@dice_list.push(temp_value)
-          temp_value += 1
-        end
-        puts @@dice_list.to_s
+
       end
 
     def roll_dice
+      temp_list = []
+      temp_value = 1
+      @@sides.times do
+        temp_list.push temp_value
+        temp_value += 1
 
-      @@dice_roll = @@dice_list[rand(@@dice_list.length)]
-      puts "Your rolled " + @@dice_roll.to_s
+      end
+
+      @dice_roll = temp_list[rand(temp_list.length)]
+      puts "Your rolled " + @dice_roll.to_s
+
 
     end
 
     def number_rolled
-      return @@dice_roll
+      return @dice_roll
     end
 
   end
 
-    def test_stats
-      puts '@playable_char_armor ' + @playable_char_armor.to_s
-      puts '@playable_char_health ' + @playable_char_health.to_s
-      puts '@playable_char_speed ' + @playable_char_speed.to_s
-      puts '@playable_char_surge ' + @playable_char_surge.to_s
-    end
 
     def pick_playable_character
       temp = false
@@ -128,12 +95,7 @@ class Dice
 
 
 
-#attacking monster stats
-
-
-
 #characters
-  @player
   class Keyleth
     @@playable_char_armor = 17
     @@playable_char_health = 8
@@ -466,17 +428,14 @@ class Dice
   end
 
 #systems
-  @dice_four = Dice.new
-   @dice_four.four
-  @dice_five = Dice.new
-    @dice_five.five
+
 
 
   @monster = Duergar_guard.new
 
   def player_attack
-      @Dice.roll_dice
-      temp_value = (@Dice.number_rolled) + (@player.attack)
+      dice.roll_dice
+      temp_value = (dice.number_rolled) + (@player.attack)
       if temp_value > @monster.armor
         @monster.take_damage
       end
@@ -484,8 +443,8 @@ class Dice
     end
 
   def monster_attack attacker
-      @Dice.roll_dice
-      temp_value = (@Dice.number_rolled) + (attacker.attack)
+      dice.roll_dice
+      temp_value = (dice.number_rolled) + (attacker.attack)
       if temp_value > @player.armor
         @player.take_damage
       end
@@ -494,14 +453,9 @@ class Dice
 
 
 
-@answer = 0
+dice = Dice.new
 
-#pick_playable_character
-#dice 20
-#@@attack
-@Dice = Dice.new
-@Dice.four
-
-
-
-@ice.roll_dice
+begin
+dice.four
+dice.roll_dice
+end until dice.number_rolled == 1
