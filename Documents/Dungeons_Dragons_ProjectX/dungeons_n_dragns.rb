@@ -138,11 +138,15 @@ def pick_playable_character
       puts "test"
     end
 
+    def attack
+      return 9
+    end
+
     def take_damage
       @@playable_char_health -= 1
       puts "Your hit!!"
       sleep 1
-      puts "Your @@health is now " + @@playable_char_health.to_s
+      puts "Your health is now " + @@playable_char_health.to_s
       sleep 2
     end
   end
@@ -322,45 +326,45 @@ def pick_playable_character
   @monster
   class Duergar_guard
     #stats
-     @@armor = 16
-     @@health = 20
-     @@attack = 8
-     @@damage = 1
-     @@experience = 2
+     armor = 16
+     health = 20
+     attack = 8
+     damage = 1
+     experience = 2
      @@to_attack = 1 #square
 
     #stat method
        def damage
-         return @@damage
+         return damage
        end
 
        def armor
-         return @@armor
+         return armor
        end
 
        def health
-         return @@health
+         return health
        end
 
        def attack
-         return @@attack
+         return attack
        end
 
        def experience
-         return @@experience
+         return experience
        end
 
     #systems
       def take_damage
-        @@health -= 1
+        health -= 1
       end
 
   end
 
   def orc_archer
-     @@armor = 13
-     @@health = 1
-     @@attack = 6
+     armor = 13
+     health = 1
+     attack = 6
      punch_damage = 1
      arrow_damage = 2
      arrow_missed_damage = 1
@@ -370,84 +374,84 @@ def pick_playable_character
    end
 
   def legion_devil
-     @@armor = 16
-     @@health = 1
-     @@attack = 11
+     armor = 16
+     health = 1
+     attack = 11
      damage = 1
      experience = 3
      to_attack_bite = 1 #square
      to_attack_tentacles = 1 #tile
-     #If @@attack with tentacles moves next to player
+     #If attack with tentacles moves next to player
    end
 
   def grell
-     @@armor = 15
-     @@health = 2
-     @@attack = 7
+     armor = 15
+     health = 2
+     attack = 7
      @@bite_damage = 1 #+ poisoned
      @@bite_damage_missed = 1
      @@tentacles_damage = 1 #+ dazed
-     @@experience = 2
+     experience = 2
    end
 
   def orc_smasher
-     @@armor = 15
-     @@health = 2
-     @@attack = 9
-     @@damage = 1
-     @@experience = 2
+     armor = 15
+     health = 2
+     attack = 9
+     damage = 1
+     experience = 2
      @@to_attack = 1 #tile
      # If attacks moves next to player
    end
 
   def cave_bear
-     @@armor = 14
-     @@health = 2
+     armor = 14
+     health = 2
      @@claws_attack = 4
      @@claws_damage = 2
      @@strike_attack = 8
      @@strike_damage = 2 #+ dazed
-     @@experience = 2
+     experience = 2
      @@to_attack_claws = 1 #tile
      @@to_attack_strike = #same tile
-     #If @@attack with stike moves next to players
+     #If attack with stike moves next to players
 
   def snake
-     @@armor = 13
-     @@health = 1
-     @@attack = 7
+     armor = 13
+     health = 1
+     attack = 7
      @@amage = #poisoned
-     @@experience = 1
+     experience = 1
      @@to_attack = 1 #tile
      #If attacks moves next to player
    end
 
   def kobold_dragonshield
-     @@armor = 16
-     @@health = 1
-     @@attack = 7
-     @@damage = 1
-     @@experience = 1
+     armor = 16
+     health = 1
+     attack = 7
+     damage = 1
+     experience = 1
      @@to_attack = 1 #square
 
    end
 
   def human_cultist
-     @@armor = 14
-     @@health = 1
-     @@attack = 6
-     @@damage = 1 #+ poisoned
-     @@experience = 1
+     armor = 14
+     health = 1
+     attack = 6
+     damage = 1 #+ poisoned
+     experience = 1
      @@to_attack = 1 #tile
      #If attacks moves next to player
    end
 
   def gibbering_mouther
-     @@armor = 14
-     @@health = 2
-     @@attack = 8
-     @@damage = 1 #+ dazed
-     @@experience = 3
+     armor = 14
+     health = 2
+     attack = 8
+     damage = 1 #+ dazed
+     experience = 3
      @@to_attack = 1 #tile
      # Attacks all players
    end
@@ -457,14 +461,14 @@ def pick_playable_character
   end
 
 #systems
+@dice = Dice.new
+@dice.twenty
 
 
-
-  @monster = Duergar_guard.new
 
   def player_attack
-      dice.roll_dice
-      temp_value = (dice.number_rolled) + (@player.attack)
+      @dice.roll_dice
+      temp_value = (@dice.number_rolled) + (@player.attack)
       if temp_value > @monster.armor
         @monster.take_damage
       end
@@ -478,14 +482,7 @@ def pick_playable_character
         @player.take_damage
       end
       puts @player.health.to_s
-    end
-
-dice = Dice.new
-pick_playable_character
-test_list = []
-test_list.push @player.test
-test_list.push @player.health
-test_list.push @player.armor
-test_list.push @player.speed
-test_list.push @player.surge
-puts test_list.to_s
+  end
+@player = Keyleth.new
+@monster = Duergar_guard.new
+player_attack
